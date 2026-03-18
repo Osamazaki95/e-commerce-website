@@ -9,16 +9,21 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import UserContextProvider from './Context/UserContext';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import CartContextProvider from './Context/CartContext';
 
 let queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <UserContextProvider>
-        <QueryClientProvider client={queryClient}>
-            <App />
-        </QueryClientProvider>
-    </UserContextProvider>
+    <CartContextProvider>
+        <UserContextProvider>
+            <QueryClientProvider client={queryClient}>
+                <App />
+                <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
+            </QueryClientProvider>
+        </UserContextProvider>
+    </CartContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

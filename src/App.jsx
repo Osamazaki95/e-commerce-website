@@ -13,6 +13,8 @@ import CounterContextProvider from './Context/CounterContext';
 import { UserContext } from './Context/UserContext';
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
 import ProductDetails from './Components/ProductDetails/ProductDetails';
+import { Toaster } from 'react-hot-toast';
+
 
 export default function App() {
 
@@ -39,6 +41,7 @@ export default function App() {
   return <>
     <CounterContextProvider>
       <RouterProvider router={routers}></RouterProvider>
+      <Toaster/>
     </CounterContextProvider>
   </>
 }
